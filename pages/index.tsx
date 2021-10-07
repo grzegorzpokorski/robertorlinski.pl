@@ -22,6 +22,9 @@ import { PostsContainer } from 'Types/content';
 
 import bannerImage from 'Images/banners/me.jpg';
 
+import Playground from 'playground-workspace/playground/src/Playground';
+import '@reach/tabs/styles.css';
+
 const Home: FC<PostsContainer> = ({ posts }) => {
   const meta = {
     title: `${siteName} ${addressSeparator} ${slogan}`,
@@ -51,6 +54,23 @@ const Home: FC<PostsContainer> = ({ posts }) => {
             <Button href="/najpopularniejsze">Najpopularniejsze artykuły</Button>
           </CenteredText>
         </TextBlock>
+        <Playground
+          id="example"
+          initialSnippet={{
+            markup: `<div id=app />`,
+            css: ``,
+            javascript: `import { h, Component, render } from 'preact';
+import htm from 'htm';
+
+const html = htm.bind(h);
+
+const app = html\`<div>Hello World from Playground!</div>\`
+
+render(app, document.getElementById('app'));`,
+          }}
+          defaultEditorTab="javascript"
+          transformJs
+        />
         <NewArticles {...{ posts }} />
         <Newsletter />
       </Wrapper>
